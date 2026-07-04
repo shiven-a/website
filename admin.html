@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — News &amp; Blog — Meridian</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-bg="">
+
+<section class="section container">
+  <p class="eyebrow">Staff only</p>
+  <h1>News &amp; Blog admin</h1>
+
+  <div class="admin-note">
+    <strong>How publishing works on this site:</strong> this is a plain
+    HTML/CSS/JS website with no server, so this page can't push changes to
+    your live site by itself. Add, edit or delete posts below, then click
+    <strong>"Download updated blog-posts.js"</strong> — that downloads a
+    ready-made file. Upload it to <code>assets/js/blog-posts.js</code> on your
+    live site (overwriting the old one) via your host's file manager, FTP, or
+    GitHub — that upload is the "publish" step, and the News &amp; Blog page
+    updates for everyone as soon as you do it.
+    <br><br>
+    <strong>Keep this page private:</strong> anyone who finds this URL can see
+    your post list and use this form, though they can only download a file to
+    their own computer — they cannot change your live site without your
+    upload step. If you'd rather nobody stumbles onto it, ask your host how to
+    password-protect this one page, or simply don't link to it publicly (it
+    isn't in the main menu).
+  </div>
+
+  <h2 class="mt-3" id="admin-form-title">Add a new post</h2>
+  <form id="admin-form" class="form mt-2">
+    <div class="row">
+      <div class="field"><label for="a-title">Title</label>
+        <input id="a-title" name="title" type="text" required placeholder="Headline"></div>
+      <div class="field"><label for="a-date">Date</label>
+        <input id="a-date" name="date" type="date" required></div>
+    </div>
+    <div class="row">
+      <div class="field"><label for="a-category">Category</label>
+        <input id="a-category" name="category" type="text" placeholder="e.g. Company News, Textiles, Events"></div>
+      <div class="field"><label for="a-image">Photo path</label>
+        <input id="a-image" name="image" type="text" placeholder="assets/images/news/my-photo.jpg (optional)"></div>
+    </div>
+    <div class="field"><label for="a-excerpt">Excerpt (1–2 sentences, shown in the list)</label>
+      <textarea id="a-excerpt" name="excerpt" required style="min-height:70px"></textarea></div>
+    <div class="field"><label for="a-body">Full article</label>
+      <textarea id="a-body" name="body" required placeholder="Leave a blank line between paragraphs"></textarea></div>
+    <div style="display:flex;gap:.8rem;flex-wrap:wrap">
+      <button class="btn btn--brass" type="submit">Save to list</button>
+      <button class="btn btn--ghost" type="button" id="admin-cancel" style="display:none">Cancel edit</button>
+    </div>
+  </form>
+
+  <h2 class="mt-3">Current posts</h2>
+  <p class="form__note">These are loaded from your current <code>assets/js/blog-posts.js</code>.
+     Changes here are not live until you download and upload the file.</p>
+  <div class="admin-list" id="admin-list"></div>
+
+  <div class="mt-3 center">
+    <button class="btn btn--brass" id="admin-download">⬇ Download updated blog-posts.js</button>
+  </div>
+</section>
+
+<script src="assets/js/blog-posts.js"></script>
+<script src="assets/js/admin.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

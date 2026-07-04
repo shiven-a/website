@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compact Agricultural Machinery — Meridian</title>
+  <meta name="description" content="[ADD: description of your Compact Agricultural Machinery products]">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<!-- BACKGROUND IMAGE SLOT: this page will show a faint background photo
+     at the top once you add a file named "agriculture.jpg" to
+     assets/images/backgrounds/. Until then it shows nothing (no error).
+     To use a different file, change the data-bg path on the body tag below. -->
+<body data-bg="assets/images/backgrounds/agriculture.jpg">
+
+<section class="section container">
+  <p class="breadcrumb" id="breadcrumb"></p>
+  <h1 id="page-title">Compact Agricultural Machinery</h1>
+  <p class="lead" id="page-intro">[loading...]</p>
+
+  <!-- Product cards render automatically from assets/js/products-data.js.
+       To add/remove a product, edit the "compact-machinery" list in that file —
+       you do NOT need to touch this HTML file. -->
+  <div class="product-grid" id="product-grid"></div>
+</section>
+
+<section class="section container center">
+  <h2>Interested in Compact Agricultural Machinery?</h2>
+  <p class="lead" style="margin-inline:auto">Ask for a datasheet, sample or quote.</p>
+  <a class="btn btn--brass mt-2" href="contact.html">Request information</a>
+</section>
+
+<!-- PAGE_ID tells products-render.js which entry in products-data.js to show.
+     This is the ONLY line that makes this page different from any other
+     product page — do not change anything else in this file. -->
+<script src="assets/js/products-data.js"></script>
+<script src="assets/js/products-render.js"></script>
+<script>renderProductPage("compact-machinery");</script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

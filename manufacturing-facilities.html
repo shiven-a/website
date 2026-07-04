@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manufacturing Facilities — Meridian</title>
+  <meta name="description" content="[ADD: description of your manufacturing facilities]">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<!-- BACKGROUND IMAGE SLOT: this page will show a faint background photo
+     at the top once you add a file named "manufacturing.jpg" to
+     assets/images/backgrounds/. Until then it shows nothing (no error).
+     To use a different file, change the data-bg path on the body tag below. -->
+<body data-bg="assets/images/backgrounds/manufacturing.jpg">
+
+<section class="section container">
+  <p class="eyebrow">How we build</p>
+  <h1>Manufacturing facilities</h1>
+  <!-- ADD: a brief (2-4 sentence) description of your facilities — locations,
+       size, capacity, standards followed, workforce, etc. -->
+  <p class="lead">[ADD BRIEF: A short description of your manufacturing facilities —
+  where they are, their scale/capacity, and what sets them apart.]</p>
+
+  <!-- ============================ FACILITY PHOTOS ============================
+       Copy/delete a .facility-gallery__item block to add or remove photos.
+  ==================================================================== -->
+  <div class="facility-gallery">
+    <div class="facility-gallery__item"><!-- ADD PHOTO: facility exterior -->PHOTO — Facility exterior</div>
+    <div class="facility-gallery__item"><!-- ADD PHOTO: production floor -->PHOTO — Production floor</div>
+    <div class="facility-gallery__item"><!-- ADD PHOTO: quality control -->PHOTO — Quality control</div>
+    <div class="facility-gallery__item"><!-- ADD PHOTO: warehouse/logistics -->PHOTO — Warehouse &amp; logistics</div>
+    <div class="facility-gallery__item"><!-- ADD PHOTO: machinery/equipment -->PHOTO — Machinery &amp; equipment</div>
+    <div class="facility-gallery__item"><!-- ADD PHOTO: team/workforce -->PHOTO — Our team</div>
+  </div>
+</section>
+
+<!-- ============================ CERTIFICATIONS ============================
+     Auto-scrolling carousel. Add/remove certificates in
+     assets/js/certifications-data.js — you do not need to edit this page.
+     Navigate with the on-screen arrows or the LEFT/RIGHT arrow keys
+     (click the carousel first so your keyboard focus is on it).
+==================================================================== -->
+<section class="section section--tint">
+  <div class="container center">
+    <p class="eyebrow">Quality &amp; compliance</p>
+    <h2>Our certifications</h2>
+    <p class="lead" style="margin-inline:auto">Click the arrows, or use your keyboard's
+       left/right arrow keys, to browse our certifications.</p>
+    <div id="cert-carousel"></div>
+  </div>
+</section>
+
+<script src="assets/js/certifications-data.js"></script>
+<script src="assets/js/certifications-carousel.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

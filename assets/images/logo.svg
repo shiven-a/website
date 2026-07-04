@@ -1,0 +1,10 @@
+<!-- PLACEHOLDER LOGO — replace this file with your own logo.
+     Keep the filename "logo.svg" (or change the path in assets/js/site.js -> COMPANY.logo).
+     A transparent PNG or SVG around 160x80px works well. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <circle cx="40" cy="40" r="36" fill="none" stroke="#002654" stroke-width="3"/>
+  <ellipse cx="40" cy="40" rx="14" ry="36" fill="none" stroke="#002654" stroke-width="2"/>
+  <line x1="4" y1="40" x2="76" y2="40" stroke="#002654" stroke-width="2"/>
+  <ellipse cx="40" cy="40" rx="36" ry="14" fill="none" stroke="#002654" stroke-width="2"/>
+  <circle cx="40" cy="40" r="6" fill="#A8772A"/>
+</svg>

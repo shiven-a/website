@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- PAGE TITLE & DESCRIPTION — shown in browser tab and Google results. Edit per page. -->
+  <title>Meridian — Global Trade House | Textiles, Agriculture, Medical</title>
+  <meta name="description" content="[ADD: one-sentence description of your company for search engines]">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<!-- BACKGROUND IMAGE SLOT: this page will show a faint background photo
+     at the top once you add a file named "home.jpg" to
+     assets/images/backgrounds/. Until then it shows nothing (no error).
+     To use a different file, change the data-bg path on the body tag below. -->
+<body data-bg="assets/images/backgrounds/home.jpg">
+<!-- The header (logo + menu), the social sidebar and the footer (contact form)
+     are added automatically by site.js -->
+
+<!-- ============================ HERO / INTRO ============================ -->
+<section class="hero container">
+  <div class="hero__grid">
+    <div>
+      <p class="hero__coord">25.2048° N · 55.2708° E — EST. [YEAR]</p> <!-- ADD: your coordinates / founding year -->
+      <p class="eyebrow">Textiles · Agriculture · Medical</p>
+      <h1>Connecting industries across&nbsp;continents.</h1>
+      <!-- ADD: your short company introduction (2–3 sentences) below -->
+      <p class="lead">[ADD INTRO: A short introduction to your company — who you are,
+      what you trade, and the markets you serve. Two or three sentences works best here.]</p>
+      <div class="mt-2">
+        <a class="btn btn--brass" href="products.html">Explore products</a>
+        <a class="btn btn--ghost" href="contact.html" style="margin-left:.5rem">Partner with us</a>
+      </div>
+    </div>
+    <!-- ADD PHOTO: hero image — a strong photo of your products, factory or operations.
+         Recommended 1000x1250px (portrait). Replace this whole placeholder div with:
+         <img class="hero__art" src="assets/images/hero.jpg" alt="..."> -->
+    <div class="hero__art">PHOTO PLACEHOLDER — hero image (portrait ~4:5)</div>
+  </div>
+</section>
+
+
+<!-- ============================ DEMOGRAPHICS / STATS ============================
+     HOW TO CHANGE THE NUMBERS: just edit the data-target="##" number on each
+     .stat div below (and data-suffix if you want a "+" or "%" after it).
+     Nothing else needs to change — when this section scrolls into view, each
+     number automatically counts up from 0 to your number over a fixed time.
+     See assets/js/stats-counter.js if you ever want to change the duration
+     (default: 1.8 seconds) or add another stat block.
+==================================================================== -->
+<section class="section section--tint">
+  <div class="container">
+    <div class="grid grid--4">
+      <!-- ADD: replace data-target with your real figures, or delete a block -->
+      <div class="stat" data-target="24" data-suffix="">
+        <h2 class="stat__num" data-count>0</h2><p>Countries served</p></div>
+      <div class="stat" data-target="15" data-suffix="+">
+        <h2 class="stat__num" data-count>0</h2><p>Years in trade</p></div>
+      <div class="stat" data-target="3" data-suffix="">
+        <h2 class="stat__num" data-count>0</h2><p>Core divisions</p></div>
+      <div class="stat" data-target="120" data-suffix="+">
+        <h2 class="stat__num" data-count>0</h2><p>Global partners</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ MISSION & VISION ============================ -->
+<section class="section container">
+  <p class="eyebrow">Who we are</p>
+  <h2>Built on trust, delivered worldwide.</h2>
+  <div class="mv mt-2">
+    <div class="mv__item">
+      <p class="eyebrow">Mission</p>
+      <h3>Our mission</h3>
+      <!-- ADD: your mission statement -->
+      <p>[ADD MISSION: What your company sets out to do every day — the value you
+      deliver to customers and partners. Keep it to 2–4 sentences.]</p>
+    </div>
+    <div class="mv__item">
+      <p class="eyebrow">Vision</p>
+      <h3>Our vision</h3>
+      <!-- ADD: your vision statement -->
+      <p>[ADD VISION: The future your company is working towards — where you want
+      to be and the impact you intend to make. 2–4 sentences.]</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ DIVISIONS PREVIEW ============================ -->
+<section class="section section--tint">
+  <div class="container">
+    <p class="eyebrow">What we trade</p>
+    <h2>Three divisions, one standard of quality.</h2>
+    <div class="grid grid--3 mt-2">
+      <a class="card" href="textiles.html" style="text-decoration:none">
+        <!-- ADD PHOTO: textiles category image -->
+        <div class="card__media">PHOTO — Textiles</div>
+        <div class="card__body"><span class="card__tag">01 — Division</span>
+          <h3>Textiles</h3><p>Men's &amp; women's fashion and furnishing fabrics.</p></div>
+      </a>
+      <a class="card" href="agriculture.html" style="text-decoration:none">
+        <!-- ADD PHOTO: agriculture category image -->
+        <div class="card__media">PHOTO — Agriculture</div>
+        <div class="card__body"><span class="card__tag">02 — Division</span>
+          <h3>Agriculture</h3><p>Compact &amp; automated machinery and agricultural chemicals.</p></div>
+      </a>
+      <a class="card" href="medical.html" style="text-decoration:none">
+        <!-- ADD PHOTO: medical category image -->
+        <div class="card__media">PHOTO — Medical</div>
+        <div class="card__body"><span class="card__tag">03 — Division</span>
+          <h3>Medical</h3><p>Consumables, cath lab, dialysis, lab equipment, stents &amp; pharmaceuticals.</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script src="assets/js/stats-counter.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

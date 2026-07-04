@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core Values — Meridian</title>
+  <meta name="description" content="[ADD: description of what makes your company valuable to partners]">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<!-- BACKGROUND IMAGE SLOT: this page will show a faint background photo
+     at the top once you add a file named "core-values.jpg" to
+     assets/images/backgrounds/. Until then it shows nothing (no error).
+     To use a different file, change the data-bg path on the body tag below. -->
+<body data-bg="assets/images/backgrounds/core-values.jpg">
+
+<section class="section container">
+  <div class="center">
+    <p class="eyebrow">Why partners choose us</p>
+    <h1>Our core values</h1>
+    <!-- ADD: one intro sentence -->
+    <p class="lead" style="margin-inline:auto">[ADD: A single sentence explaining the
+    core promise at the centre of everything you do.]</p>
+  </div>
+
+  <!-- ============================ RADIAL DIAGRAM ============================
+       The centre circle (.radial__hub) is surrounded by points (.radial__node).
+       TO ADD OR REMOVE A POINT: copy or delete a whole <div class="radial__node">…</div>
+       block. The script positions them evenly around the circle automatically —
+       you do NOT need to set any positions yourself.
+  ============================================================================ -->
+  <div class="radial" id="radial">
+    <!-- CENTRE CIRCLE -->
+    <div class="radial__hub">
+      <span>The Meridian Promise</span>      <!-- ADD: short centre label -->
+      <h3>Reliable global<br>partnership</h3> <!-- ADD: centre headline -->
+    </div>
+
+    <!-- SURROUNDING POINTS (add/remove these freely) -->
+    <div class="radial__node">
+      <h4>Quality Assurance</h4>
+      <p><!-- ADD -->[Short point about your quality standards.]</p>
+    </div>
+    <div class="radial__node">
+      <h4>On-time Delivery</h4>
+      <p><!-- ADD -->[Short point about logistics &amp; reliability.]</p>
+    </div>
+    <div class="radial__node">
+      <h4>Global Network</h4>
+      <p><!-- ADD -->[Short point about your reach.]</p>
+    </div>
+    <div class="radial__node">
+      <h4>Competitive Pricing</h4>
+      <p><!-- ADD -->[Short point about value for money.]</p>
+    </div>
+    <div class="radial__node">
+      <h4>Trusted Compliance</h4>
+      <p><!-- ADD -->[Short point about standards/certifications.]</p>
+    </div>
+    <div class="radial__node">
+      <h4>Dedicated Support</h4>
+      <p><!-- ADD -->[Short point about customer service.]</p>
+    </div>
+  </div>
+</section>
+
+<!-- Optional supporting detail under the diagram -->
+<section class="section section--tint">
+  <div class="container center">
+    <h2>Backed by people, not just promises.</h2>
+    <!-- ADD: supporting paragraph, or delete this section -->
+    <p class="lead" style="margin-inline:auto">[ADD: A paragraph expanding on the value
+    you bring — your team, experience, or guarantees.]</p>
+    <a class="btn btn--brass mt-2" href="contact.html">Start a conversation</a>
+  </div>
+</section>
+
+<script src="assets/js/site.js"></script>
+<script>
+/* Positions the value points evenly around the centre circle, and draws
+   dotted connector lines. Falls back to a stacked list on small screens. */
+(function () {
+  const radial = document.getElementById("radial");
+  if (!radial) return;
+  const nodes = [...radial.querySelectorAll(".radial__node")];
+
+  function layout() {
+    // Remove any old connector svg
+    radial.querySelector(".radial__line")?.remove();
+
+    if (window.innerWidth < 720) { radial.classList.add("is-stacked"); return; }
+    radial.classList.remove("is-stacked");
+
+    const radius = 38; // % of container from centre to node centre
+    const svgNS = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(svgNS, "svg");
+    svg.setAttribute("class", "radial__line");
+    svg.setAttribute("viewBox", "0 0 100 100");
+    svg.setAttribute("preserveAspectRatio", "none");
+
+    nodes.forEach((node, i) => {
+      const angle = (-90 + (360 / nodes.length) * i) * Math.PI / 180;
+      const x = 50 + radius * Math.cos(angle);
+      const y = 50 + radius * Math.sin(angle);
+      node.style.left = x + "%";
+      node.style.top  = y + "%";
+      const line = document.createElementNS(svgNS, "line");
+      line.setAttribute("x1", 50); line.setAttribute("y1", 50);
+      line.setAttribute("x2", x);  line.setAttribute("y2", y);
+      svg.appendChild(line);
+    });
+    radial.prepend(svg);
+  }
+  layout();
+  window.addEventListener("resize", layout);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Meridian</title>
+  <meta name="description" content="[ADD: description — get in touch, buy products or represent us]">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<!-- BACKGROUND IMAGE SLOT: this page will show a faint background photo
+     at the top once you add a file named "contact.jpg" to
+     assets/images/backgrounds/. Until then it shows nothing (no error).
+     To use a different file, change the data-bg path on the body tag below. -->
+<body data-bg="assets/images/backgrounds/contact.jpg">
+
+<section class="section container">
+  <p class="eyebrow">Get in touch</p>
+  <h1>Contact us</h1>
+  <p class="lead">Whether you want to buy from us or represent us in your country,
+  choose the path that fits and we'll be in touch.</p>
+
+  <!-- ============================ TWO PATHS ============================ -->
+  <div class="contact-paths mt-3">
+
+    <!-- PATH 1: Buyers -->
+    <div class="path path--brass">
+      <p class="eyebrow">For buyers</p>
+      <h3>Looking to buy our products</h3>
+      <p>Tell us what you're interested in and we'll send specifications, samples or a quote.</p>
+      <form class="form js-contact-form mt-2" novalidate>
+        <input type="hidden" name="enquiry_type" value="Buyer enquiry">
+        <input type="hidden" name="_subject" value="New buyer enquiry from website">
+        <div class="row">
+          <div class="field"><label for="b-name">Name</label>
+            <input id="b-name" name="name" type="text" required></div>
+          <div class="field"><label for="b-email">Email</label>
+            <input id="b-email" name="email" type="email" required></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="b-company">Company</label>
+            <input id="b-company" name="company" type="text"></div>
+          <div class="field"><label for="b-country">Country</label>
+            <input id="b-country" name="country" type="text"></div>
+        </div>
+        <div class="field"><label for="b-interest">Product interest</label>
+          <select id="b-interest" name="product_interest">
+            <!-- ADD/EDIT options to match your catalogue (mirrors products-data.js) -->
+            <option>Textiles — Men's Fashion</option>
+            <option>Textiles — Women's Fashion</option>
+            <option>Textiles — Furnishing Fabrics</option>
+            <option>Agriculture — Compact Machinery</option>
+            <option>Agriculture — Automated Machinery</option>
+            <option>Agriculture — Agricultural Chemicals</option>
+            <option>Medical — Medical Consumables</option>
+            <option>Medical — Cath Lab Portfolio</option>
+            <option>Medical — Dialysis Equipment &amp; Consumables</option>
+            <option>Medical — Medical Lab Equipment</option>
+            <option>Medical — Stents Portfolio</option>
+            <option>Medical — Pharmaceuticals</option>
+            <option>Other / Multiple</option>
+          </select></div>
+        <div class="field"><label for="b-msg">Your query</label>
+          <textarea id="b-msg" name="query" required></textarea></div>
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="form__status" role="status"></div>
+        <button class="btn btn--brass" type="submit">Send enquiry</button>
+      </form>
+    </div>
+
+    <!-- PATH 2: Representatives -->
+    <div class="path">
+      <p class="eyebrow">For partners</p>
+      <h3>Represent us in your country</h3>
+      <p>Interested in becoming our agent or distributor? Share your details and territory.</p>
+      <form class="form js-contact-form mt-2" novalidate>
+        <input type="hidden" name="enquiry_type" value="Representation enquiry">
+        <input type="hidden" name="_subject" value="New representation enquiry from website">
+        <div class="row">
+          <div class="field"><label for="r-name">Name</label>
+            <input id="r-name" name="name" type="text" required></div>
+          <div class="field"><label for="r-email">Email</label>
+            <input id="r-email" name="email" type="email" required></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="r-company">Company</label>
+            <input id="r-company" name="company" type="text"></div>
+          <div class="field"><label for="r-country">Country / territory</label>
+            <input id="r-country" name="country" type="text"></div>
+        </div>
+        <div class="field"><label for="r-div">Division of interest</label>
+          <select id="r-div" name="division">
+            <option>Textiles</option>
+            <option>Agriculture</option>
+            <option>Medical</option>
+            <option>All divisions</option>
+          </select></div>
+        <div class="field"><label for="r-msg">About you</label>
+          <textarea id="r-msg" name="query" required placeholder="Your experience, network and the market you cover"></textarea></div>
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="form__status" role="status"></div>
+        <button class="btn" type="submit">Apply to represent us</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ OFFICES ============================
+     EDIT THIS LIST: copy a .office block to add a new office, change the text.
+     Mark your main office with class="office office__hq".
+================================================================= -->
+<section class="section section--tint">
+  <div class="container">
+    <p class="eyebrow">Our offices</p>
+    <h2>Find us around the world.</h2>
+    <div class="offices mt-3">
+
+      <div class="office office__hq">
+        <span class="flag">HEAD OFFICE</span>
+        <h4>[City], [Country]</h4>
+        <p>[ADD: street address]<br>
+           [ADD: phone]<br>
+           [ADD: email]</p>
+      </div>
+
+      <div class="office">
+        <span class="flag">REGIONAL OFFICE</span>
+        <h4>[City], [Country]</h4>
+        <p>[ADD: address]<br>[ADD: phone]<br>[ADD: email]</p>
+      </div>
+
+      <div class="office">
+        <span class="flag">REGIONAL OFFICE</span>
+        <h4>[City], [Country]</h4>
+        <p>[ADD: address]<br>[ADD: phone]<br>[ADD: email]</p>
+      </div>
+
+      <!-- Copy a block above to add more international offices -->
+
+    </div>
+  </div>
+</section>
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>

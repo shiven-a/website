@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical — Meridian</title>
+  <meta name="description" content="[ADD: description of your Medical division]">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<!-- BACKGROUND IMAGE SLOT: this page will show a faint background photo
+     at the top once you add a file named "medical.jpg" to
+     assets/images/backgrounds/. Until then it shows nothing (no error).
+     To use a different file, change the data-bg path on the body tag below. -->
+<body data-bg="assets/images/backgrounds/medical.jpg">
+
+<section class="section container">
+  <p class="breadcrumb"><a href="products.html">Products</a> / Medical</p>
+  <span class="eyebrow" id="division-num"></span>
+  <h1 id="division-title">Medical</h1>
+  <!-- ADD PHOTO: division hero/banner image, set in products-data.js "image" field -->
+  <p class="lead" id="division-intro">[loading...]</p>
+
+  <!-- Subcategory cards render automatically from assets/js/products-data.js -->
+  <div class="category-grid" id="category-grid"></div>
+</section>
+
+<section class="section container center">
+  <h2>Looking for a specification or a quote?</h2>
+  <p class="lead" style="margin-inline:auto">Our team can provide datasheets, samples and pricing.</p>
+  <a class="btn btn--brass mt-2" href="contact.html">Request information</a>
+</section>
+
+<script src="assets/js/products-data.js"></script>
+<script src="assets/js/products-render.js"></script>
+<script>renderDivisionPage("medical");</script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

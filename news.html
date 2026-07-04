@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News &amp; Blog — Meridian</title>
+  <meta name="description" content="[ADD: description — latest news and updates from your company]">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<!-- BACKGROUND IMAGE SLOT: this page will show a faint background photo
+     at the top once you add a file named "news.jpg" to
+     assets/images/backgrounds/. Until then it shows nothing (no error).
+     To use a different file, change the data-bg path on the body tag below. -->
+<body data-bg="assets/images/backgrounds/news.jpg">
+
+<section class="section container">
+  <p class="eyebrow">Latest updates</p>
+  <h1>News &amp; Blog</h1>
+  <p class="lead">Announcements, product launches and stories from across our divisions.</p>
+
+  <!-- The single full-post view renders here when a post is opened -->
+  <div class="post-full" id="post-full" style="display:none"></div>
+
+  <!-- The list of posts renders here automatically -->
+  <div class="post-list mt-3" id="post-list"></div>
+
+  <!-- =========================================================================
+       👇  HOW TO ADD A NEWS POST  👇
+       Two ways:
+       1. EASIEST — no code: open admin.html in a browser, fill in the form,
+          click "Download updated blog-posts.js", then replace the file of
+          that name inside assets/js/ on your site and re-upload/redeploy.
+       2. By hand: open assets/js/blog-posts.js, copy one post block, paste
+          it at the top, change the text, and save.
+  ========================================================================== -->
+</section>
+
+<!-- Order matters: load the post data first, then the renderer -->
+<script src="assets/js/blog-posts.js"></script>
+<script src="assets/js/blog-render.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
