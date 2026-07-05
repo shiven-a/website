@@ -64,7 +64,7 @@ function renderProductPage(subId, titleOverride) {
   // title already printed in the page's <h1 id="page-title">.
   const title = sub ? sub.title : (titleOverride || document.getElementById("page-title")?.textContent || "");
 
-  document.title = `${title} — Meridian`;
+  document.title = `${title} — JMViva`;
 
   const crumbEl = document.getElementById("breadcrumb");
   if (crumbEl) {

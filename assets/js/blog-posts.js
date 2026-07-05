@@ -24,7 +24,7 @@ const BLOG_POSTS = [
 
   {
     id: "global-expansion-2026",
-    title: "Meridian opens new regional office in Singapore",
+    title: "JMViva opens new regional office in Singapore",
     date: "2026-06-01",
     category: "Company News",
     image: "",   // <!-- ADD PHOTO: e.g. "assets/images/news/singapore-office.jpg" (16:9 works best) -->

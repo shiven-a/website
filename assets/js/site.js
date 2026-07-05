@@ -16,16 +16,17 @@
 
 /* ---------- 1. YOUR COMPANY DETAILS (edit these) ---------- */
 const COMPANY = {
-  name: "MERIDIAN",                 // <-- REPLACE with your company name (placeholder)
-  tagline: "Global Trade House",    // <-- short tagline shown under the logo
-  // Path to your logo image. Put your file in /assets/images/ and point to it.
-  // <!-- ADD PHOTO/LOGO: transparent PNG or SVG, ~160x80px for the header,
-  //      it is reused automatically (large + faint) as the page watermark. -->
+  name: "JMViva",                          // your company name
+  tagline: "Trust, Tradition, Technology", // your slogan, shown under the logo
+  // Path to your logo image (your uploaded logo.svg is already here).
   logo: "assets/images/logo.svg",
-  email: "info@yourcompany.com",    // <-- REPLACE
-  phone: "+00 000 000 0000",        // <-- REPLACE
-  // Used ONLY as a fallback if the logo image fails to load (1-3 letters).
-  monogram: "M"                     // <-- REPLACE (e.g. your initials)
+  // The logo is transparent (no background box), so it's reused as-is for the
+  // faint page watermark too.
+  watermarkLogo: "assets/images/logo.svg",
+  email: "info@yourcompany.com",    // <-- REPLACE with your real email
+  phone: "+00 000 000 0000",        // <-- REPLACE with your real phone number
+  // Used ONLY as a fallback if the logo image ever fails to load (1-3 letters).
+  monogram: "JMViva"
 };
 
 /* ---------- 1b. SOCIAL LINKS (fixed icons on the right of every page) ---------- */
@@ -98,9 +99,12 @@ function buildHeader() {
     return `<li><a href="${item.href}" class="${active}">${item.label}</a></li>`;
   }).join("");
 
+  // Your logo image already contains the "JMViva" wordmark, so we show the logo
+  // and the slogan beside it. The text name is kept for screen readers and as a
+  // fallback if the image ever fails to load (see brandFallback below).
   const logoImg = COMPANY.logo
     ? `<img class="brand__logo" src="${COMPANY.logo}" alt="${COMPANY.name} logo"
-         onerror="this.style.display='none'">`   // hides gracefully until you add the file
+         onerror="this.style.display='none';this.closest('.brand').classList.add('brand--nologo')">`
     : "";
 
   return `
@@ -108,8 +112,10 @@ function buildHeader() {
     <div class="container nav" id="nav">
       <a class="brand" href="index.html">
         ${logoImg}
-        <span><span class="brand__name">${COMPANY.name}</span>
-        <span class="brand__tag">${COMPANY.tagline}</span></span>
+        <span class="brand__text">
+          <span class="brand__name">${COMPANY.name}</span>
+          <span class="brand__tag">${COMPANY.tagline}</span>
+        </span>
       </a>
       <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -211,9 +217,10 @@ function buildWatermark() {
   const div = document.createElement("div");
   div.className = "watermark";
   div.setAttribute("aria-hidden", "true");
-  if (COMPANY.logo) {
+  const wmSrc = COMPANY.watermarkLogo || COMPANY.logo;
+  if (wmSrc) {
     // Falls back to the plain monogram automatically if the logo file is missing.
-    div.innerHTML = `<img class="watermark__logo" src="${COMPANY.logo}" alt=""
+    div.innerHTML = `<img class="watermark__logo" src="${wmSrc}" alt=""
       onerror="this.outerHTML='<div class=&quot;watermark__mark&quot;>${COMPANY.monogram}</div>'">`;
   } else {
     div.innerHTML = `<div class="watermark__mark">${COMPANY.monogram}</div>`;
@@ -228,25 +235,83 @@ function buildWatermark() {
    at the photo it should use. The photo shows large and faint behind the top of
    the page, then fades/scrolls away so your logo watermark takes over lower down.
 
-   IMPORTANT: these are just empty image SLOTS — the files don't exist yet.
-   Until you drop the matching photo into assets/images/backgrounds/, the page
-   simply shows no backdrop (nothing breaks, no broken-image icon). Add the file
-   with the exact name shown in each page's data-bg and it appears automatically.
-   See assets/images/backgrounds/README.txt for the full list of expected names.
+   ADDING A PHOTO: drop a file into  company-website/assets/images/backgrounds/ .
+   It just needs to match the name in data-bg. To make life easy, this code also
+   automatically tries common variations, so ALL of these will work for the home
+   page even though the tag says "home.jpg":
+        home.jpg   home.jpeg   home.png   home.webp
+        Home.jpg   HOME.JPG    (any capitalisation)
+   If none of them load, the page simply shows no backdrop (nothing breaks).
+
+   TROUBLESHOOTING: if your photo isn't showing, add  ?debug  to the page URL
+   (e.g. index.html?debug) and reload — a small note in the bottom-left corner
+   will tell you whether the file was found and which path worked.
    ============================================================================ */
 function buildBackdrop() {
   const photo = document.body.getAttribute("data-bg");
   if (!photo) return "";
+
   const div = document.createElement("div");
   div.className = "page-backdrop is-photo";
   div.setAttribute("aria-hidden", "true");
-  div.style.backgroundImage = `url("${photo}")`;
-  // Only fade it in once the image actually loads, so a missing file stays
-  // invisible instead of showing a broken box.
-  const check = new Image();
-  check.onload = () => div.classList.add("is-loaded");
-  check.src = photo;
-  return div.outerHTML;
+  // Insert the backdrop right AFTER the watermark (if present) so the photo
+  // paints on top of the logo and covers it. Falls back to the top of the body.
+  const wm = document.querySelector(".watermark");
+  if (wm) wm.insertAdjacentElement("afterend", div);
+  else document.body.insertAdjacentElement("afterbegin", div);
+
+  // Build a list of candidate URLs to try: the exact path first, then common
+  // extension and capitalisation variants of the same base name.
+  const dot = photo.lastIndexOf(".");
+  const base = dot > -1 ? photo.slice(0, dot) : photo;      // ".../home"
+  const exts = ["jpg", "jpeg", "png", "webp", "JPG", "JPEG", "PNG", "WEBP"];
+  const candidates = [photo];
+  exts.forEach(e => {
+    candidates.push(`${base}.${e}`);
+    // also try a capitalised first letter of the filename (Home.jpg)
+    const slash = base.lastIndexOf("/");
+    const dir = base.slice(0, slash + 1), file = base.slice(slash + 1);
+    if (file) {
+      const cap = file.charAt(0).toUpperCase() + file.slice(1);
+      candidates.push(`${dir}${cap}.${e}`);
+    }
+  });
+  // de-duplicate while keeping order
+  const tryList = [...new Set(candidates)];
+
+  const debug = /[?&]debug\b/.test(location.search);
+  function note(msg, ok) {
+    if (!debug) return;
+    let n = document.getElementById("bg-debug");
+    if (!n) {
+      n = document.createElement("div");
+      n.id = "bg-debug";
+      n.style.cssText = "position:fixed;left:8px;bottom:8px;z-index:9999;background:#002654;color:#fff;font:12px monospace;padding:8px 10px;border-radius:6px;max-width:80vw;opacity:.92";
+      document.body.appendChild(n);
+    }
+    n.textContent = "Backdrop: " + msg;
+    n.style.background = ok ? "#1f7a44" : "#8a2c26";
+  }
+
+  let i = 0;
+  function tryNext() {
+    if (i >= tryList.length) {
+      note(`no file found. Put your photo at "${photo}" (checked ${tryList.length} name variants).`, false);
+      return;
+    }
+    const url = tryList[i++];
+    const img = new Image();
+    img.onload = () => {
+      div.style.backgroundImage = `url("${url}")`;
+      div.classList.add("is-loaded");
+      note(`loaded "${url}".`, true);
+    };
+    img.onerror = tryNext;
+    img.src = url;
+  }
+  tryNext();
+
+  return ""; // the element is already inserted above
 }
 
 /* ---------- SOCIAL SIDEBAR (LinkedIn + WhatsApp, fixed on every page) ---------- */
@@ -319,8 +384,13 @@ function wireContactForms() {
 
 /* ---------- BOOT ---------- */
 document.addEventListener("DOMContentLoaded", () => {
-  // Backdrop first (sits at the top, absolute), then the fixed logo watermark.
-  document.body.insertAdjacentHTML("afterbegin", buildBackdrop() + buildWatermark());
+  // Watermark first, then the backdrop ON TOP of it. Both sit behind the page
+  // content (content is z-index 1). Because the backdrop is inserted AFTER the
+  // watermark and the photo is fully opaque, the photo completely covers the
+  // logo where it shows; where the photo fades out lower down, the logo shows
+  // through again.
+  document.body.insertAdjacentHTML("afterbegin", buildWatermark());
+  buildBackdrop(); // inserts itself right after the watermark (see the function)
   document.body.insertAdjacentHTML("afterbegin", buildHeader());
   document.body.insertAdjacentHTML("beforeend", buildSocialSidebar());
   document.body.insertAdjacentHTML("beforeend", buildFooter());
